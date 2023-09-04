@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "video.js": "^8.5.2"
+  },
+  "dependencies": {
+    "@justalk/pornhub-api": "^3.5.0"
+  }
+}
