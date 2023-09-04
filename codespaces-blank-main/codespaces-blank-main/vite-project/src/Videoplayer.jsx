@@ -3,26 +3,28 @@ import { useLocation } from 'react-router-dom';
 import ApiComponent from "./ApiComponent";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import tag from './Tag';
 const Videoplayer = () => {
   const location = useLocation();
   const videoData = location.state;
-  const [fetchedData, setFetchedData] = useState([]);
+  const [fetchedData,setFetchedData] = useState([]);
 
   // Destructure the videoData object
   const { title, image, duration, views, video, id } = videoData;
 
   // Define an inline style object for the iframe
   const iframeStyle = {
-    width: "90vw",  // Full width
-    height: "60vh", // Full height
-    border: "none", // Remove iframe border (optional)
+    marginTop: '8rem',
+    width: "100%",  // Full width
+    height: "70vh", // Full height
+    border: "1px solid white", // Remove iframe border (optional)
   };
 const onDataFetched = (data) => {
     setFetchedData(data);
     console.log(data)
   };
-const randomTag = () => {
-  const a
+
+console.log(tag)
 
   return (
     <div>
@@ -35,11 +37,11 @@ const randomTag = () => {
         style={iframeStyle} // Apply inline style
       ></iframe>
       
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:'0'}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
       <h2>{title}</h2>
       <p>Views: {views}</p>
       </div>
-    <ApiComponent apiUrl={`https://lust.scathach.id/xhamster/search?key=milf&page=2`} onDataFetched={onDataFetched}/>
+    <ApiComponent apiUrl={`https://lust.scathach.id/xhamster/search?key=${tag}&page=1`} onDataFetched={onDataFetched}/>
     {fetchedData.map((video) => (
       <div key={video.id} className="video-container">
       <Link to='/player' state={video}>

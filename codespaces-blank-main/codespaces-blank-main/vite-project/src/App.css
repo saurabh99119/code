@@ -85,3 +85,7 @@ img{
 .video-container:hover .info {
   opacity: 1; /* Show info on hover */
 }
+
+.searchbar:active{
+  border-bottom: 1px solid purple;
+}
