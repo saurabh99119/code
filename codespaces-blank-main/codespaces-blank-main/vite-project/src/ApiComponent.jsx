@@ -43,7 +43,7 @@ const ApiComponent = ({ apiUrl, onDataFetched }) => {
 
   const api = async () => {
     try {
-      const res = await fetch('https://lust.scathach.id/pornhub/search?key=milf&page=2&sort=mr'); // Use the apiUrl prop here
+      const res = await fetch(apiUrl); // Use the apiUrl prop here
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }

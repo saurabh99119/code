@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
+import ApiComponent from './ApiComponent';
 
 function App() {
   const [fetchedData, setFetchedData] = useState([]);
@@ -10,15 +11,7 @@ function App() {
 
   useEffect(() => {
     // Fetch random nxx videos using Axios
-    fetch('https://lust.scathach.id/xhamster/search?key=milf&page=1')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.data);
-        setFetchedData(data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  
   }, []); // Empty dependency array to fetch data once when the component mounts
 
   useEffect(() => {
@@ -44,8 +37,13 @@ function App() {
     }
   };
 
+  const onDataFetched = (data) => {
+    setFetchedData(data);
+  };
+
   return (
     <div>
+      <ApiComponent apiUrl={"https://lust.scathach.id/xhamster/search?key=milf&page=2"} onDataFetched={onDataFetched} />
       {currentData.map((video) => (
       <div key={video.id} className="video-container">
       <Link to='/player' state={video}>
