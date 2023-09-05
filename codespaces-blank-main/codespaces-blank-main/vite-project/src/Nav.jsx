@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import './App.css'; 
+import {  useNavigate } from "react-router-dom";
 
 const Navigation = ({handleSearch}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
+    const navigate = useNavigate();
   const navStyle = {
+    position: "sticky",
+    top: 0,
+    left : 0,
+    
+    zIndex: 1,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 20px",
-    backgroundColor: "#333",
+    backgroundColor: "#1A1A1D",
     color: "white",
   };
 
@@ -58,6 +65,9 @@ const Navigation = ({handleSearch}) => {
   const searchInputStyle = {
     padding: "5px 10px",
     border: "none",
+    borderRadius: "5px",
+    fontfamily: "inherit",
+    fontSize: "1.2rem",
     marginRight: "10px",
     borderBottom: "2px solid transparent",
     transition: "border-color 0.3s ease",
@@ -65,11 +75,16 @@ const Navigation = ({handleSearch}) => {
   };
 
   const searchButtonStyle = {
-    backgroundColor: "#007BFF",
-    color: "white",
+    backgroundColor: "#6f2232",
+    color: "4e4e50",
     border: "none",
     padding: "5px 15px",
     cursor: "pointer",
+    borderRadius: "5px",
+    fontSize: "1.2rem",
+    transition: "background-color 0.3s ease",
+    outline: "none",
+
   };
 
   const toggleDropdown = () => {
@@ -85,7 +100,9 @@ const handleChange = () => {
   return (
     <nav style={navStyle}>
       <div style={logoStyle}>
-        <img src="logo.png" alt="Logo" />
+        <img src="logo.png" alt="Logo" 
+        onClick={()=> navigate('/')}
+        />
       </div>
       <div style={categoriesStyle}>
         <div style={dropdownStyle}>
@@ -119,6 +136,7 @@ const handleChange = () => {
             }
         />
         <button
+        className="search-button"
         onClick={handleChange}
         style={searchButtonStyle}>Search</button>
       </div>

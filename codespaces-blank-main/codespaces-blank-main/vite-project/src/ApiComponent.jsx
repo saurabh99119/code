@@ -19,7 +19,7 @@ const ApiComponent = ({ apiUrl, onDataFetched }) => {
       console.error('Error:', error);
 
       // Call the ApiComponent again with a static URL
-      const staticApiUrl = 'https://lust.scathach.id/pornhub/search?key=milf&page=1&sort=mv';
+      const staticApiUrl = 'https://lust.scathach.id/Xvideos/search?key=milf&page=1';
 
       try {
         const dataArray = await fetch(staticApiUrl).then((response) => response.json());
